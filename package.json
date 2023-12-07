@@ -1,0 +1,40 @@
+{
+  "name": "nodejs-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PropsCoder-Raj/nodejs-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PropsCoder-Raj/nodejs-assignment/issues"
+  },
+  "homepage": "https://github.com/PropsCoder-Raj/nodejs-assignment#readme",
+  "dependencies": {
+    "aws": "^0.0.3-2",
+    "aws-sdk": "^2.1513.0",
+    "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.2",
+    "querystring": "^0.2.1",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0"
+  }
+}
