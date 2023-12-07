@@ -5,7 +5,6 @@ const newsSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "Please provide a news title"],
-    maxlength: [500, "news title should be under 100 characters"],
     unique: true,
   },
   desc: {

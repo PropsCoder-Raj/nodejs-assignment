@@ -1,6 +1,5 @@
 const News = require("../models/news");
 const BigPromise = require("../middleware/BigPromise");
-const { uploadImageBase64 } = require("../util/awsSDK");
 
 // Create a new News
 exports.createNews = BigPromise(async (req, res, next) => {
