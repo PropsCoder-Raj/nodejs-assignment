@@ -22,3 +22,31 @@ exports.getBlogPosts = async () => {
         return { status: false, message: error.message };
     }
 }
+
+exports.getNewsData = async (category) => {
+    const options = {
+        method: 'GET',
+        url: 'https://newsi-api.p.rapidapi.com/api/category',
+        params: {
+          category: category,
+          language: 'en',
+          country: 'us',
+          sort: 'top',
+          page: '1',
+          limit: '20'
+        },
+        headers: {
+          'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+          'X-RapidAPI-Host': 'newsi-api.p.rapidapi.com'
+        }
+      };
+      
+
+    try {
+        const response = await axios.request(options);
+        return { status: true, message: "Data Founded", data: response.data };
+    } catch (error) {
+        console.error(error);
+        return { status: false, message: error.message };
+    }
+}
