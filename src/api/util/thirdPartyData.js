@@ -112,3 +112,22 @@ exports.getMoviesData = async () => {
         return { status: false, message: error.message };
     }
 }
+
+exports.getEstateData = async (city) => {
+
+    let options = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'https://nominatim.openstreetmap.org/search?format=json&q='+city,
+        headers: { }
+    };
+      
+
+    try {
+        const response = await axios.request(options);
+        return { status: true, message: "Data Founded", data: response.data };
+    } catch (error) {
+        console.error(error);
+        return { status: false, message: error.message };
+    }
+}
