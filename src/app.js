@@ -33,6 +33,7 @@ app.use('/api/v1/recipe', require('./api/routes/recipe')); // Recipe routes
 app.use('/api/v1/movies', require('./api/routes/movies')); // Movies routes
 app.use('/api/v1/estate', require('./api/routes/estate')); // Estate routes
 app.use('/api/v1/wether', require('./api/routes/wether')); // Wether routes
+app.use('/api/v1/product', require('./api/routes/products')); // Products routes
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);

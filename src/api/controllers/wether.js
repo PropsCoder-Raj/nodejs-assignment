@@ -49,9 +49,9 @@ exports.getWetherAllFields = BigPromise(async (req, res, next) => {
     const wether = await Wether.find({ $or: [
         { location: { $regex: search, $options: 'i' }},
         { region: { $regex: search, $options: 'i' }},
-        // { temp_c: { $eq: parseFloat(search) }},
-        // { temp_f: { $eq: parseFloat(search) }},
-        // { wind_degree: { $eq: parseFloat(search) }},
+        { temp_c: { $eq: !isNaN(parseFloat(search)) ? parseFloat(search) : 0 }},
+        { temp_f: { $eq: !isNaN(parseFloat(search)) ? parseFloat(search) : 0 }},
+        { wind_degree: { $eq: !isNaN(parseFloat(search)) ? parseFloat(search) : 0 }},
     ]});
     return res.status(200).send({ success: true, message: "Get all Wether successfully.", data: wether, count: wether.length });
 })

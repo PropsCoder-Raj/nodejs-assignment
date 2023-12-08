@@ -153,3 +153,32 @@ exports.getWetherData = async (city) => {
         return { status: false, message: error.message };
     }
 }
+
+exports.getProductsData = async (categories) => {
+
+    const options = {
+        method: 'GET',
+        url: 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list',
+        params: {
+          country: 'us',
+          lang: 'en',
+          currentpage: '0',
+          pagesize: '30',
+          categories: categories,
+          concepts: 'H&M MAN'
+        },
+        headers: {
+          'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+          'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
+        }
+      };
+      
+
+    try {
+        const response = await axios.request(options);
+        return { status: true, message: "Data Founded", data: response.data };
+    } catch (error) {
+        console.error(error);
+        return { status: false, message: error.message };
+    }
+}
