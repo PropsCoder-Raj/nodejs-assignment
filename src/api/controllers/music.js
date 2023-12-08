@@ -40,12 +40,12 @@ exports.getMusic = BigPromise(async (req, res, next) => {
 
 // Get Music By Title OR Category
 exports.getMusicAllFields = BigPromise(async (req, res, next) => {
-    const { albumName, source, artistNames, track } = req.query;
+    const { search } = req.query;
     const music = await Music.find({ $or: [
-        { albumName: { $regex: albumName ? albumName : "", $options: 'i' }},
-        { source: { $regex: source ? source : "", $options: 'i' }},
-        { artistNames: { $regex: artistNames ? artistNames : "", $options: 'i' }},
-        { track: { $regex: track ? track : "", $options: 'i' }}
+        { albumName: { $regex: search, $options: 'i' }},
+        { source: { $regex: search, $options: 'i' }},
+        { artistNames: { $regex: search, $options: 'i' }},
+        { track: { $regex: search, $options: 'i' }}
     ]});
     return res.status(200).send({ success: true, message: "Get all Music successfully.", data: music, count: music.length });
 })

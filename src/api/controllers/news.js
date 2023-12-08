@@ -35,7 +35,8 @@ exports.getNews = BigPromise(async (req, res, next) => {
 
 // Get News By Title OR Category
 exports.getNewsByTitleORCategory = BigPromise(async (req, res, next) => {
-    const news = await News.find({ $or: [{ title: { $regex: req.query.title ? req.query.title : "", $options: 'i' }  }, { category: req.query.category ? req.query.category : "" }] });
+    const { search } = req.query;
+    const news = await News.find({ $or: [{ title: { $regex: search, $options: 'i' }  }, { category: search }] });
     return res.status(200).send({ success: true, message: "Get all News successfully.", data: news, count: news.length });
 })
 
