@@ -13,7 +13,6 @@ const newsSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, "Please provide an category name"],
-    select: false,
   },
   publishedAt: {
     type: Date,

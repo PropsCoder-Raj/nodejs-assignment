@@ -76,6 +76,11 @@ exports.deleteMusic = BigPromise(async (req, res, next) => {
         return next(new Error("Please enter Music _id"));
     }
 
+    const isMusic = await Music.findOne({ _id: _id })
+    if(!isMusic){
+        return res.status(404).send({ success: false, message: "Music not found." });
+    }
+
     const music = await Music.findOneAndDelete({ _id: _id });
     return res.status(200).send({ success: true, message: "Delete Music successfully.", data: music });
 });

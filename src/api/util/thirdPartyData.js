@@ -72,3 +72,24 @@ exports.getMusicData = async (data) => {
         return { status: false, message: error.message };
     }
 }
+
+exports.getRecipeData = async (data) => {
+    const options = {
+        method: 'GET',
+        url: 'https://food-recipes-with-images.p.rapidapi.com/',
+        params: {q: 'chicken soup'},
+        headers: {
+          'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+          'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
+        }
+    };
+      
+
+    try {
+        const response = await axios.request(options);
+        return { status: true, message: "Data Founded", data: response.data };
+    } catch (error) {
+        console.error(error);
+        return { status: false, message: error.message };
+    }
+}

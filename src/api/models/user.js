@@ -24,6 +24,12 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 1, // 0: Inactive, 1: Active
   },
+  followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ]
 }, { timestamps: true });
 
 userSchema.pre("save", async function (next) {

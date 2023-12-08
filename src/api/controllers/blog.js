@@ -80,6 +80,11 @@ exports.deleteBlog = BigPromise(async (req, res, next) => {
         return next(new Error("Please enter Blog _id"));
     }
 
+    const isBlog = await Blogs.findOne({ _id: _id })
+    if(!isBlog){
+        return res.status(404).send({ success: false, message: "Blog not found." });
+    }
+
     const blog = await Blogs.findOneAndDelete({ _id: _id });
     return res.status(200).send({ success: true, message: "Delete Blog successfully.", data: blog });
 });

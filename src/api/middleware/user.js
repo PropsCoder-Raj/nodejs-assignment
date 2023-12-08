@@ -10,7 +10,12 @@ exports.isLoggedIn = BigPromise(async (req, res, next) => {
     return next(new Error("Login First to access the page or authorization failed."));
   }
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = await User.findById(decoded.id);
+  const user = await User.findById(decoded.id);
+
+  if(!user){
+    return next(new Error("User not found."));
+  } 
+  req.user = user;
 
   next();
 });

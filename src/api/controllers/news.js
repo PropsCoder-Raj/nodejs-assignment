@@ -64,6 +64,11 @@ exports.deleteNews = BigPromise(async (req, res, next) => {
     if (!_id) {
         return next(new Error("Please enter News _id"));
     }
+    
+    const isNews = await News.findOne({ _id: _id })
+    if(!isNews){
+        return res.status(404).send({ success: false, message: "News not found." });
+    }
 
     const news = await News.findOneAndDelete({ _id: _id });
     return res.status(200).send({ success: true, message: "Delete News successfully.", data: news });
